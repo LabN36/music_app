@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_app/presentation/bloc/song_bloc.dart';
 
+import 'cart_screen.dart';
+
 class SongListScreen extends StatefulWidget {
   const SongListScreen({super.key});
 
@@ -21,6 +23,16 @@ class _SongListScreenState extends State<SongListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Music App'),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              print('Cart');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const CartScreen()));
+            },
+            child: Text('Total Items: 0'),
+          )
+        ],
       ),
       body: BlocBuilder<SongCubit, SongState>(
         builder: (context, state) {
@@ -40,7 +52,7 @@ class _SongListScreenState extends State<SongListScreen> {
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 8),
                     constraints: const BoxConstraints(
-                      maxHeight: 80,
+                      maxHeight: 100,
                     ),
                     child: Row(
                       children: [
@@ -75,6 +87,26 @@ class _SongListScreenState extends State<SongListScreen> {
                                 Text(
                                   'Artist: ${state.songs![index].artistName}',
                                   overflow: TextOverflow.ellipsis,
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                        onPressed: () {
+                                          print('Remove');
+                                        },
+                                        icon: const Icon(Icons.remove)),
+                                    Text('0'),
+                                    IconButton(
+                                        onPressed: () {
+                                          print('Add');
+                                        },
+                                        icon: const Icon(Icons.add)),
+                                    IconButton(
+                                        onPressed: () {
+                                          print('Listen');
+                                        },
+                                        icon: const Icon(Icons.music_note))
+                                  ],
                                 )
                               ],
                             ),
