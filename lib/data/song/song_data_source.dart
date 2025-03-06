@@ -1,5 +1,5 @@
 import 'song_model.dart';
 
 abstract class SongDataSource {
-  Future<SongModel> getSongs();
+  Future<List<SongModel>?> getSongs();
 }

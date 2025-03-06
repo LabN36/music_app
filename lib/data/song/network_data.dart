@@ -1,9 +1,9 @@
 import 'song_data_source.dart';
 import 'song_model.dart';
 
-class SongNetwork implements SongDataSource {
+class SongNetworkData implements SongDataSource {
   @override
-  Future<SongModel> getSongs() {
+  Future<List<SongModel>?> getSongs() {
     throw UnimplementedError();
   }
 }
