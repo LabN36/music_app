@@ -1,9 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/io_client.dart';
 import 'package:music_app/data/song/network_data.dart';
 import 'package:music_app/db_helper/db_helper.dart';
+import 'package:music_app/domain/song/song_usecase.dart';
+import 'package:music_app/presentation/bloc/song_bloc.dart';
 import 'package:music_app/presentation/screen/song_list_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,7 +39,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SongListScreen(songRepository),
+      home: BlocProvider(
+        create: (context) => SongCubit(GetSongsUsecase(songRepository)),
+        child: const SongListScreen(),
+      ),
     );
   }
 }
