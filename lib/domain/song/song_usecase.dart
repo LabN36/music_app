@@ -7,7 +7,7 @@ class GetSongsUsecase {
 
   GetSongsUsecase(this._songRepository);
 
-  Future<List<SongEntity>?> execute() {
-    return _songRepository.getSongs();
+  Future<List<SongEntity>?> execute({bool forceRefresh = false}) {
+    return _songRepository.getSongs(forceRefresh);
   }
 }

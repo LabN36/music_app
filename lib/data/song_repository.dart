@@ -14,9 +14,9 @@ class SongRepositoryImpl implements SongRepository {
   });
 
   @override
-  Future<List<SongEntity>> getSongs() async {
+  Future<List<SongEntity>> getSongs([bool forceRefresh = false]) async {
     try {
-      final songs = await songLocalStorageData.getSongs();
+      final songs = forceRefresh ? null : await songLocalStorageData.getSongs();
       if (songs != null) {
         return songs.map((e) => SongEntity.fromSong(e)).toList();
       } else {
