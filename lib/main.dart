@@ -6,6 +6,7 @@ import 'package:http/io_client.dart';
 import 'package:music_app/data/song/network_data.dart';
 import 'package:music_app/db_helper/db_helper.dart';
 import 'package:music_app/domain/song/song_usecase.dart';
+import 'package:music_app/presentation/bloc/cart_bloc.dart';
 import 'package:music_app/presentation/bloc/song_bloc.dart';
 import 'package:music_app/presentation/screen/song_list_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,7 +28,10 @@ void main() async {
     songNetworkData: songNetworkData,
     songLocalStorageData: songLocalStorageData,
   );
-  runApp(MyApp(songRepository: songRepository));
+  runApp(BlocProvider(
+    create: (context) => CartCubit(),
+    child: MyApp(songRepository: songRepository),
+  ));
 }
 
 class MyApp extends StatelessWidget {
