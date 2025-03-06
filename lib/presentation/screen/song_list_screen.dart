@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_app/domain/song/song_entity.dart';
 import 'package:music_app/presentation/bloc/cart_bloc.dart';
 import 'package:music_app/presentation/bloc/song_bloc.dart';
+import 'package:music_app/presentation/screen/song_detail_screen.dart';
+import 'package:music_app/presentation/widget/alumb_image_widget.dart';
 
 import 'cart_screen.dart';
 
@@ -79,7 +81,10 @@ class SongItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Tapped');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SongDetailScreen(songEntity)),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 8),
@@ -88,7 +93,7 @@ class SongItemWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            getAlbumImage(),
+            AlbumImage(songEntity.albumImages[2]),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(8),
@@ -127,23 +132,6 @@ class SongItemWidget extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Image getAlbumImage() {
-    return Image.network(
-      songEntity.albumImages[2],
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) {
-          return child;
-        }
-        return const CircularProgressIndicator();
-      },
-      // errorBuilder: (context, error, stackTrace) =>
-      //     Container(
-      //   height: 80,
-      //   width: 80,
-      // ),
     );
   }
 

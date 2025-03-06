@@ -1,5 +1,4 @@
 
-App Flow
 [Done] Invoke above API in the Flutter Application.
 [Done] Fetch all Top-20 songs and store them on Database.
 [Done] Display all Top-20 songs in a List from the database
@@ -9,7 +8,7 @@ App Flow
     c. Artist name (optional)
     d. Add to Cart – Should add the song to the cart
     e. Listen Icon – Should play the song [-] (Optional)
-[WIP] On clicking a record, it should navigate to another screen which will show all details of Song.
+[Done] On clicking a record, it should navigate to another screen which will show all details of Song.
 [-] Play the song on the detail screen (Optional)
 
 
