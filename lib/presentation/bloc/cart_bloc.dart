@@ -75,4 +75,8 @@ class CartCubit extends Cubit<CartState> {
       emit(state.copyWith(items: newItems));
     }
   }
+
+  void clearCart() {
+    emit(state.copyWith(items: {}));
+  }
 }
