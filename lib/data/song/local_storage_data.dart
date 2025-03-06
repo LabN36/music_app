@@ -14,10 +14,10 @@ class SongLocalStorageData implements SongDataSource {
     if (songsString != null) {
       final json = jsonDecode(songsString);
       final songs =
-          json.map<SongModel>((item) => SongModel.fromJson(item)).toList();
+          json.map<SongModel>((item) => SongModel.fromCache(item)).toList();
       return Future.value(songs);
     }
-    return Future.value(<SongModel>[]);
+    return null;
   }
 
   saveSongs(List<SongModel>? songs) {
