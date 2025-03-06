@@ -1,6 +1,6 @@
-import 'package:music_app/domain/song_repository.dart';
+import 'package:music_app/domain/song/song_entity.dart';
+import 'package:music_app/domain/song/song_repository.dart';
 
-import '../domain/song_entity.dart';
 import 'song/local_storage_data.dart';
 import 'song/network_data.dart';
 
